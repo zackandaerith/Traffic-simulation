@@ -51,7 +51,7 @@ public class Car {
 		y = d - c;
 	}
 	
-	//hash存入需要等红灯的路口
+	//hash waiting for the red light
 	public HashMap saveHash() {
 		map.put(String.valueOf(Road.B.x)+String.valueOf(Road.B.y), l.getl1());// B
 		map.put(String.valueOf(Road.F.x)+String.valueOf(Road.F.y), l.getl2());// F
@@ -64,7 +64,7 @@ public class Car {
 		return map;
 	}
 
-	// 车的移动
+	// Car's move
 	public void move() {
 		moveLength = 15;
 		if (carX == road.RoadList.get(i + 1).x
@@ -74,8 +74,8 @@ public class Car {
 			s2 = String.valueOf(road.RoadList.get(i + 2).x)
 					+ String.valueOf(road.RoadList.get(i + 2).y);
 
-			if (!judgeInflexion()) { //判断是否到达掉头的拐点,若不是拐点,再判断红绿灯
-				if (judgeLight(s1) == false) {//判断红绿灯
+			if (!judgeInflexion()) { // U turn or red and green 
+				if (judgeLight(s1) == false) {// 
 					moveLength = 0;
 				}
 			}
@@ -88,7 +88,7 @@ public class Car {
 			x = b - a;
 			y = d - c;
 		}
-		//到达终点的处理
+		//reach the end
 		if (carX - road.RoadList.get(i + 1).x == 0
 				&& carY - road.RoadList.get(i + 1).y == 0) {
 			carX = -10;
@@ -99,15 +99,15 @@ public class Car {
 		if (moveLength == 0) {
 			i--;
 		} else {
-			if (!judgeInflexionClash()) { //若是否是拐点以及是否碰撞
+			if (!judgeInflexionClash()) { //clas detected
 				differentDirection();
 			}
 		}
 	}
-	//超不同方向走,在走之前判断前一个车的状态
+	//Reach different destination
 	public void differentDirection() {
 		if (y > 0) {
-			//走之前先判断该方向的前一个车,若前一个车的状态是停止,则停止;否则向前走
+			//Stop if a Car ahead, if not, move forward
 			if (!Document.prior.containsKey(String.valueOf(carX)
 					+ String.valueOf(carY + moveLength))) {
 					carX = a;
@@ -140,7 +140,7 @@ public class Car {
 		
 		}
 	}
-	// 判断红绿灯
+	// Judge Light
 	public boolean judgeLight(String a) {
 
 		if (map.containsKey(a)) {
@@ -153,7 +153,7 @@ public class Car {
 		return true;
 	}
 
-	// 判断拐点是否碰撞
+	// Judge clash
 	public boolean judgeInflexionClash() {
 		if (carX == 1250 && carY == 205) {
 			if (Document.prior.containsKey("1265190")) {
@@ -170,7 +170,7 @@ public class Car {
 		return false;
 	}
 
-	// 判断是否是掉头的拐点，若是，则不判断红绿灯
+	// Judge Inflexion
 	public boolean judgeInflexion() {
 		if (s1.equals("1250235") && s2.equals("1250190"))
 			change1 = true;
@@ -184,10 +184,10 @@ public class Car {
 
 	}
 
-	// 车的定时器
+	// Timer
 	public void setCarTimer() {
 		Timer t1 = new Timer();
-		// 在1秒之后执行,每隔1s执行一次
+		// set 1 second gap
 		t1.schedule(new carTimer(), 1 * 1000, 1 * 1000);
 	}
 	
