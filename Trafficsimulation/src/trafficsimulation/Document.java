@@ -51,13 +51,13 @@ public class Document {
 		timerThree.schedule(new generateCarThree(), 0, snTime * 1000);
 	}
 	
-	// 东西路口随机产生车，EHW, EHE任一点作为起始点。
+	// Random car in intersection
 	public void randomOne() {
 		int index;
 		Random ran = new Random();
 		index = ran.nextInt(One.length);
 		oneCrossA = One[index];
-		//使用hashset，防止产生的入口和出口重复。
+		//hashset，for dupilication invention
 		Set<Integer> setOne = new HashSet<Integer>();
 		setOne.add(One[index]);
 		while (setOne.size() < 2) {
@@ -65,14 +65,14 @@ public class Document {
 			setOne.add(Final[index]);
 		}
 		for (Integer id : setOne) {
-			//如果起始路口和终点的路口是同一个，则再产生。
+			//add one more seting 
 			if (id != oneCrossA)
 				oneCrossB = id;
 		}
 		setOne.clear();
 	}
 
-	// 南北路口随机产生车，BSN, TBN, BSS, TBS任一点作为起始点。
+	// Random car on BSN, TBN, BSS, TBS
 	public void randomThree() {
 		int index;
 		Random ran = new Random();
@@ -90,7 +90,7 @@ public class Document {
 		}
 		setThree.clear();
 	}
-	//东西路口定时产生车
+	//get random car on timmer
 	private class generateCarOne extends TimerTask {
 		public void run() {
 			randomOne();
@@ -100,7 +100,7 @@ public class Document {
 			}
 		}
 	}
-	//南北路口定时产生车
+	//addtion car
 	private class generateCarThree extends TimerTask {
 		public void run() {
 			randomThree();
@@ -111,7 +111,7 @@ public class Document {
 
 		}
 	}
-	//判断路口是否饱和，判断路口饱和的方法是：如果这一秒路口起始点有车，则停止产生，否则产生车。
+	//Judge Jam
 	public boolean judgeJam(int begin) {
 		if (begin == 2) {
 			String first = String.valueOf(Road.E.x)
