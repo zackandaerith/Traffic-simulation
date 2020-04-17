@@ -32,7 +32,7 @@ public class FrameDemo extends JFrame {
 	}
 
 
-//定义一个MyPanel（是我自己的面板，是用于绘图和显示绘图的区域）
+//Setting MyPanel
 class MyPanel extends JPanel {
 	
 	Document z;
@@ -51,11 +51,10 @@ class MyPanel extends JPanel {
 		}
 	}
 
-	// 覆盖JPanel的paint方法
-		// Graphics是绘图的重要类，可以把他理解成一只画笔
-	//public void paintComponent(Graphics g) {
+	
+	//paint Component
 	public void paintComponent(Graphics g) {
-		// 调用父类函数完成初始化
+		// inherentent
 		super.paintComponent(g);
 		drawLine(g);
 		drawLight(g, z.t);
@@ -64,27 +63,27 @@ class MyPanel extends JPanel {
 
 	}
 
-	// 画出车
+	// Draw car
 	public void drawCar(Graphics g, ArrayList<Car> carList) {
-		//首先清空记录界面上一秒所有车的位置的哈希表
+		//hash
 		z.prior.clear();
-		//SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-	    //System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
+		//SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+	    //System.out.println(df.format(new Date()));// new Date()
 		for (int i = 0; i < carList.size(); i++) {
 			int roadA = carList.get(i).getBegin();
-			//如果是南北路口产生的车，设置为蓝色；否则为绿色
+			//blue from south and green from north
 			if (roadA == 1 || roadA == 3 || roadA == 4 || roadA == 6)
 				g.setColor(Color.blue);
 			else
 				g.setColor(Color.gray);
 			g.fillRect(carList.get(i).getcarX(), carList.get(i).getcarY(), 10,
 					8);
-			// 每一个车达到终点，则从车的列表中remove
+			// remove car when enter the end
 			if (carList.get(i).getcarX() == -10
 					&& carList.get(i).getcarY() == -10) {
 				carList.remove(i);
 			}
-			//记录当前车的位置，将当前车的位置加入哈希表，供下一秒判断一辆车的前一个位置是否有车
+			//record the string
 			String x = String.valueOf(carList.get(i).getcarX())
 					+ String.valueOf(carList.get(i).getcarY());
 			z.prior.put(x, 1);
@@ -93,7 +92,7 @@ class MyPanel extends JPanel {
 		System.out.println();
 	}
 
-	// 画出路
+	// Draw line
 	public void drawLine(Graphics g) {
 		g.drawLine(50, 175, 275, 175);
 		g.drawLine(275, 100, 275, 175);
@@ -117,7 +116,7 @@ class MyPanel extends JPanel {
 		g.drawLine(1325, 250, 1550, 250);
 	}
 
-	// 画出红绿灯
+	// Draw Light
 	public void drawLight(Graphics g, Light t) {
 
 		if (t.getl1() == 0) {
@@ -153,7 +152,7 @@ class MyPanel extends JPanel {
 		}
 	}	
 
-	// 画出隔离带
+	// Draw block
 	public void drawblocks(Graphics g) {
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(60, 210, 215, 5);
