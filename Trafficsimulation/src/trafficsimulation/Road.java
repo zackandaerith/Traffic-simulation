@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class Road {
     
-    //自己设定了路径的坐标
+    // Sett coordinate
 	static Point A = new Point(290, 100);
 	static Point B = new Point(290, 175);
 	static Point D = new Point(50, 190);
@@ -54,17 +54,17 @@ public class Road {
 	public Road(int begin, int end) {
 		choose(begin, end);
 	}
-	//根据起始点和终点，产生一辆车要走的路。
+	// seting begin and end
 	public ArrayList<Point> choose(int begin, int end) {
 			//BSN-EHW
-			//对于拐弯的路，记录起点，转折点，终点
+			//record turning
 			if (begin == 1 && end == 2) {
 				RoadList.add(A); // A
 				RoadList.add(R1); // R1
 				RoadList.add(D); // D
 			}
 			//BSN-BSS
-			//对于直行的车辆，记录起点，在红绿灯口出，终点
+			//recording
 			else if(begin == 1 && end == 3) {
 				RoadList.add(A); //A
 				RoadList.add(B); //B
@@ -105,7 +105,7 @@ public class Road {
 				RoadList.add(U); //U
 			}
 			//EHW-BSN
-			//对于掉头的车，要记录拐点的坐标
+			//record u turn
 			else if(begin == 2 && end == 1) {
 				RoadList.add(E); //E
 				RoadList.add(F); //F
@@ -316,7 +316,7 @@ public class Road {
 				RoadList.add(R); //R
 				RoadList.add(b); //b
 			}
-			//返回一条路径。
+			//reurn the roadlist
 			return (ArrayList<Point>) RoadList;
 		}
     
