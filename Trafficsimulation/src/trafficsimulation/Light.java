@@ -16,9 +16,8 @@ import java.text.SimpleDateFormat;
 
 public class Light {
     
-    // 0: 红灯, 1: 绿灯
-	// 初始设置l2,l3为绿灯;l1,l4为红灯
-	// 初始设置l6,l7为绿灯;l5,l8为红灯
+    // 0: red, 1: green
+	// initial
 
 	private int l1 = 0;
 	private int l2 = 1;
@@ -30,15 +29,14 @@ public class Light {
 	private int gap;
 	private int specialGap;
 
-	// 设定定时器
+	// Set timer
 	public Light() {
 
-		// 获取设置参数的窗口的相关参数
 		redGap = Integer.parseInt(Setting.redText.getText());
 		greenGap = Integer.parseInt(Setting.greenText.getText());
 		delayGap = Integer.parseInt(Setting.delayText.getText());
 		gap = redGap + greenGap;
-		//判断CR2路口初始时刻的红绿灯应该如何设置。
+		//CR2 inintail the light
 		if (redGap > delayGap) {
 			l5 = 1;
 			l6 = 0;
@@ -56,27 +54,25 @@ public class Light {
 	public void setLightTimer() {
 
 		Timer t1 = new Timer();
-		// 控制CR1,按照题目中的参数需在12秒之后执行,每隔14s执行一次。本程序中可以自己设定。
-		// 依照题意中参数: (new light1(), 120 * 1000, 140 * 1000);
+		// (new light1(), 120 * 1000, 140 * 1000);
 		t1.schedule(new light1(), greenGap * 1000, gap * 1000);
 
 		Timer t2 = new Timer();
-		// 控制CR1,按照题目中的参数需在14秒之后执行,每隔14s执行一次。本程序中可以自己设定。
-		// 依照题意中参数: (new light2(), 140 * 1000, 140 * 1000);
+		// (new light2(), 140 * 1000, 140 * 1000);
 		t2.schedule(new light2(), gap * 1000, gap * 1000);
 
 		Timer t3 = new Timer();
-		// 控制CR2,按照题目中的参数需在4秒之后执行,每隔14s执行一次。本程序中可以自己设定。
-		// 依照题意中参数: (new light3(), 40 * 1000, 140 * 1000);
+		
+		// (new light3(), 40 * 1000, 140 * 1000);
 		t3.schedule(new light3(), specialGap * 1000, gap * 1000);
 
 		Timer t4 = new Timer();
-		// 控制CR2,按照题目中的参数需在6秒之后执行,每隔14s执行一次。本程序中可以自己设定。
-		// 依照题意中参数: (new light4(), 60 * 1000, 140 * 1000);
+		
+		// (new light4(), 60 * 1000, 140 * 1000);
 		t4.schedule(new light4(), delayGap * 1000, gap * 1000);
 	}
 	
-	//控制CR1路口
+	//CR road
 	private class light1 extends TimerTask {
 		@Override
 		public void run() {
@@ -87,7 +83,7 @@ public class Light {
 			}
 		}
 	}
-	//控制CR1路口
+	//2
 	private class light2 extends TimerTask {
 		@Override
 		public void run() {
@@ -97,7 +93,7 @@ public class Light {
 			}
 		}
 	}
-	//控制CR2路口
+	//3
 	private class light3 extends TimerTask {
 		@Override
 		public void run() {
@@ -108,7 +104,7 @@ public class Light {
 			}
 		}
 	}
-	//控制CR2路口
+	//4
 	private class light4 extends TimerTask {
 		@Override
 		public void run() {
