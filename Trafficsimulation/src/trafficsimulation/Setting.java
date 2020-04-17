@@ -43,8 +43,8 @@ public class Setting extends JFrame {
 		getContentPane().add(redText);
 		redText.setColumns(10);
 		
-		//设置开始按钮，当点击开始按钮时，根据设置的参数画出交通图
-		JButton startButton = new JButton("开始仿真");
+		//Setting button and layout
+		JButton startButton = new JButton("Start simulation");
 		startButton.setBounds(165, 332, 91, 23);
 		getContentPane().add(startButton);
 		
@@ -53,11 +53,11 @@ public class Setting extends JFrame {
 		getContentPane().add(greenText);
 		greenText.setColumns(10);
 		
-		JLabel redLabel = new JLabel("2,3红灯持续时间");
+		JLabel redLabel = new JLabel("2,3 Red light");
 		redLabel.setBounds(73, 90, 143, 15);
 		getContentPane().add(redLabel);
 		
-		JLabel greenLabel = new JLabel("2,3绿灯持续时间");
+		JLabel greenLabel = new JLabel("2,3 Green light);
 		greenLabel.setBounds(73, 139, 143, 15);
 		getContentPane().add(greenLabel);
 		
@@ -70,11 +70,11 @@ public class Setting extends JFrame {
 		getContentPane().add(delayText);
 		delayText.setColumns(10);
 		
-		JLabel delayLabel = new JLabel("6,7绿灯延迟时间");
+		JLabel delayLabel = new JLabel("6,7 Green light delay");
 		delayLabel.setBounds(73, 184, 127, 15);
 		getContentPane().add(delayLabel);
 		
-		JLabel lblNewLabel = new JLabel("南北路口产生车间隔");
+		JLabel lblNewLabel = new JLabel("South to North gap");
 		lblNewLabel.setBounds(73, 235, 129, 15);
 		getContentPane().add(lblNewLabel);
 		
@@ -83,7 +83,7 @@ public class Setting extends JFrame {
 		getContentPane().add(SNText);
 		SNText.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("东西路口产生车间隔");
+		JLabel lblNewLabel_1 = new JLabel("East to West gap");
 		lblNewLabel_1.setBounds(73, 282, 134, 15);
 		getContentPane().add(lblNewLabel_1);
 		
@@ -92,8 +92,8 @@ public class Setting extends JFrame {
 		getContentPane().add(EWText);
 		EWText.setColumns(10);
 		
-		JLabel label = new JLabel("交通活动仿真系统");
-		label.setFont(new Font("宋体", Font.BOLD, 16));
+		JLabel label = new JLabel("Traffic simulation system");
+		label.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		label.setBounds(128, 33, 149, 15);
 		getContentPane().add(label);
 		
@@ -106,7 +106,7 @@ public class Setting extends JFrame {
 		SimpleListener ourListener = new SimpleListener(); 
 		startButton.addActionListener(ourListener); 
 	}
-	//监听开始按钮，当点击开始按钮时，新建画图窗口的FrameDemo类
+	//New FramDome when SimpleListener implement
 	private class SimpleListener implements ActionListener 
     {
 
