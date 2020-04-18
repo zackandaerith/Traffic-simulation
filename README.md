@@ -27,3 +27,9 @@ Setting.java
 
 Run Setting demo
 
+Reference
+https://gitee.com/sapperjiang/TrafficSim/blob/master/%E5%8A%A8%E6%80%81%E4%BA%A4%E9%80%9A%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF.pdf
+https://zhuanlan.zhihu.com/p/66961439
+https://sumo.dlr.de/docs/
+
+
